@@ -15,4 +15,5 @@ export const TaskInputField = styled.input`
     line-height: 28px;
     border-bottom: 1px solid #ff9900;
     color: white;
+    outline: none;
 `

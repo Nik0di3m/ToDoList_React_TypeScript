@@ -20,6 +20,7 @@ export const TaskInputField = styled.input<TextStye>`
     border-bottom: 1px solid #ff9900;
     color: white;
     text-decoration: ${(props) => (props.done ? 'line-through' : 'none')};
+    outline: none;
 `
 export const DeleteIconContainer = styled.div`
     transition: all 100ms ease-in;
