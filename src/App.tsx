@@ -1,58 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import LoginPage from './Pages/LoginPage'
+import RegisterPage from './Pages/RegisterPage'
+import UserPage from './Pages/UserPage'
+import { selectUser } from './Redux/features/userSlice'
+const App = () => {
+    const { user } = useSelector(selectUser)
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
-  );
+    return (
+        <Router>
+            {!user ? (
+                <>
+                    <Route exact path="/">
+                        <LoginPage />
+                    </Route>
+                    <Route path="/register">
+                        <RegisterPage />
+                    </Route>
+                </>
+            ) : (
+                <>
+                    <UserPage />
+                </>
+            )}
+        </Router>
+    )
 }
 
-export default App;
+export default App
