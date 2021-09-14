@@ -39,7 +39,7 @@ const RegisterForm = () => {
 
     return (
         <RegisterFormContainer>
-            <FormTitle>Login</FormTitle>
+            <FormTitle>Register</FormTitle>
             <TextInputContainer>
                 <TextInput
                     placeholder="Username"
