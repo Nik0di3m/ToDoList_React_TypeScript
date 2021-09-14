@@ -15,25 +15,33 @@ const RegisterForm = () => {
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
     const [passwordRepeate, setPasswordRepeat] = useState<string>('')
+    const [regError, setRegError] = useState<boolean>(false)
 
     const dispatch = useDispatch()
 
     const handleRegisterCilck = async () => {
-        await axios
-            .post('/auth/local/register', {
-                username: user,
-                email: email,
-                password: password,
-            })
-            .then((res) => {
-                console.log(res)
-                dispatch(
-                    login({
-                        user: res.data.user.username,
-                        jwt: res.data.jwt,
-                    })
-                )
-            })
+        if (
+            password === passwordRepeate &&
+            user.length >= 3 &&
+            email.length >= 6 &&
+            password.length >= 6
+        ) {
+            await axios
+                .post('/auth/local/register', {
+                    username: user,
+                    email: email,
+                    password: password,
+                })
+                .then((res) => {
+                    dispatch(
+                        login({
+                            user: res.data.user.username,
+                            jwt: res.data.jwt,
+                        })
+                    )
+                })
+        }
+        setRegError(true)
         console.log('register')
     }
 
@@ -69,6 +77,11 @@ const RegisterForm = () => {
                     onChange={setPasswordRepeat}
                     width="600px"
                 />
+                {regError && (
+                    <div>
+                        <h2>Something go wrong...</h2>
+                    </div>
+                )}
                 <Button
                     color="#FF9900"
                     text="Create"

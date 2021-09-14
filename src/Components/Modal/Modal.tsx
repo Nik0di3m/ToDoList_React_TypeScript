@@ -47,10 +47,8 @@ const Modal = ({
                     },
                 })
                 .then((res) => {
-                    console.log(res)
                     setTasks([...res.data.task])
                     setListName(res.data.name)
-                    console.log(tasks)
                 })
         }
     }
@@ -71,7 +69,7 @@ const Modal = ({
                     }
                 )
                 .then((res) => {
-                    console.log(res)
+                    return
                 })
                 .catch((err) => {
                     console.log(err)
@@ -94,7 +92,6 @@ const Modal = ({
                 )
                 .then((res) => {
                     setUpdated(!upDated)
-                    console.log(res)
                 })
                 .catch((err) => console.log(err))
             setGroupId(null)
@@ -110,7 +107,6 @@ const Modal = ({
     }
 
     useEffect(() => {
-        console.log(groupId)
         fetchTask()
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [groupId])
