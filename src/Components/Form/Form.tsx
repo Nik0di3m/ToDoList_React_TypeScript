@@ -2,7 +2,7 @@ import React, { ReactChild } from 'react'
 import { FormContainer, FormWrapper } from './FormElements'
 
 interface CoolProps {
-    children: ReactChild[]
+    children: ReactChild[] | ReactChild
 }
 
 const Form = ({ children }: CoolProps) => {
