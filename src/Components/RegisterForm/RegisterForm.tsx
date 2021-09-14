@@ -40,6 +40,7 @@ const RegisterForm = () => {
                         })
                     )
                 })
+                .catch((err) => console.log(err))
         }
         setRegError(true)
         console.log('register')
